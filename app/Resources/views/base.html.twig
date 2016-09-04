@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Adverts{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('/components/bootswatch/cosmo/bootstrap.min.css') }}">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{{ path('index') }}">Adverts</a>
+            </div>
+
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-2" aria-expanded="false" style="height: 1px;">
+              <ul class="nav navbar-nav navbar-left">
+                  
+                {% if is_granted('ROLE_USER') %}
+                  <li><a href="{{ path('my-adverts') }}">My adverts</a></li>
+                  <li><a href="#" id='new-advert'>New advert</a></li>
+                {% endif %}
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+              {% if not is_granted('ROLE_USER') %}
+                  <li><a href="{{ path('login') }}">Login</a></li>
+                  <li><a href="{{ path('register') }}">Register</a></li>
+              {% else %}
+                  <li><a href="{{ path('logout') }}">Logout</a></li>
+              {% endif %}
+              </ul>
+            </div>
+            <div></div>
+          </div>
+        </nav>
+        <div class="container">{% block body %}{% endblock %}</div>
+        <script src="{{ asset('/components/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('/components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

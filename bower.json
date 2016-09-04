@@ -1,0 +1,20 @@
+{
+  "name": "adverts",
+  "homepage": "https://github.com/Dambre/adverts",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.7",
+    "bootswatch": "thomaspark/bootswatch#^3.3.7"
+  }
+}

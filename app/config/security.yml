@@ -1,0 +1,31 @@
+security:
+    encoders:
+        AppBundle\Entity\User: bcrypt
+
+    providers:
+        user_provider:
+            entity:
+                class: AppBundle\Entity\User
+                property: username
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
+                username_parameter: login[username]
+                password_parameter: login[password]
+
+            logout:
+                path: /logout
+                target: /
+
+    access_control:
+        - { path: ^/create-advert, roles: ROLE_USER }
+        - { path: ^/register, allow_if: "!has_role('ROLE_USER')" }
+        - { path: ^/login, allow_if: "!has_role('ROLE_USER')" }

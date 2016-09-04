@@ -1,0 +1,23 @@
+index:
+    path: /
+    defaults: { _controller: AppBundle:Default:index }
+
+my-adverts:
+    path: /myAdverts
+    defaults: { _controller: AppBundle:Default:myAdverts }
+
+create_advert:
+    path: /create-advert
+    defaults: { _controller: AppBundle:Default:createAdvert }
+    methods: [POST]
+
+login:
+    path: /login
+    defaults: { _controller: AppBundle:Default:login }
+
+register:
+    path: /register
+    defaults: { _controller: AppBundle:Default:register }
+
+logout:
+    path: /logout
